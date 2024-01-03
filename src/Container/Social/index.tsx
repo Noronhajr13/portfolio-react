@@ -13,6 +13,7 @@ import {
   DownSidebar,
   Separator,
   Contacts,
+  Contact,
   IconBox,
   ContactItem,
   SocialMedia,
@@ -28,9 +29,9 @@ import {
 // const faLocationDotPropIcon = faLocationDot as IconProp
 
 const SocialList = [ 
-  { icon: faInstagram},
-  { icon: faLinkedin},
-  { icon: faGithub}
+  { icon: faInstagram, link: 'https://www.instagram.com/noronhajf/'},
+  { icon: faLinkedin, link: 'https://www.linkedin.com/in/claudionoronha01/'},
+  { icon: faGithub, link: 'https://github.com/Noronhajr13'}
 ]
 
 const ContactsList = [
@@ -67,10 +68,13 @@ export default function Social(): JSX.Element {
 
         <Contacts>
           {ContactsList.map((object) => (
-            <div>
+            <Contact>
               <IconBox><FontAwesomeIcon icon={object.icon}/></IconBox>
-              <ContactItem>{object.title}{object.contact}</ContactItem>
-            </div>
+              <ContactItem>
+                <p>{object.title}</p>
+                <p>{object.contact}</p>
+              </ContactItem>
+            </Contact>
           ))}
         </Contacts>
       
@@ -78,7 +82,7 @@ export default function Social(): JSX.Element {
 
         <SocialMedia>
           {SocialList.map((object) => (
-            <SocialItem><FontAwesomeIcon icon={object.icon}/></SocialItem>
+            <SocialItem><a href={object.link}><FontAwesomeIcon icon={object.icon}/></a></SocialItem>
           ))}
         </SocialMedia>
 
